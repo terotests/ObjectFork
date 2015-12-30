@@ -28,7 +28,7 @@
 
           Object.keys(obj).forEach(function (key) {
             if (obj[key] instanceof Array || typeof obj[key] == "object") {
-              if (original[key]) return me.merge(obj[key]);
+              if (original[key]) return me.commit(obj[key]);
               original[key] = obj[key];
             } else {
               original[key] = obj[key];
