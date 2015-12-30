@@ -16,7 +16,7 @@
       // Initialize static variables here...
 
       /**
-       * @param Object obj
+       * @param Object obj  - Forked object that should be committed back to it&#39;s source
        */
       _myTrait_.commit = function (obj) {
 
@@ -86,28 +86,6 @@
 
         this._root = rootObject;
       });
-
-      /**
-       * @param Object obj  - Object to merge back to the original
-       */
-      _myTrait_.merge = function (obj) {
-
-        // merge the object back to it's master object
-        if (obj.__master) {
-          // anything that has changed...
-          var me = this,
-              original = obj.__master;
-
-          Object.keys(obj).forEach(function (key) {
-            if (obj[key] instanceof Array || typeof obj[key] == "object") {
-              if (original[key]) return me.merge(obj[key]);
-              original[key] = obj[key];
-            } else {
-              original[key] = obj[key];
-            }
-          });
-        }
-      };
     })(this);
   };
 
